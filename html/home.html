@@ -9,7 +9,7 @@
 <body>
   <div class="screen">
     <header class="top">
-    <h1>LABRATS</h1>
+    <h1>LearnHub</h1>
     </header>
 
     <!-- Lista de ciclos (sem barra de pesquisa) -->
@@ -20,15 +20,39 @@
       <button class="btn-cycle" onclick="location.href='secundario.html'">Secundário</button>
     </main>
 
-    <!-- Barra inferior apenas com o ícone da casa -->
     <nav class="bottombar">
-    <button class="home-btn" aria-label="Home" onclick="location.href='home.html'">
+
+      <!-- ESQUERDA: perfil + centros -->
+      <div class="left-group">
+        <button class="nav-btn" onclick="location.href='perfil.html'">
+          <img src="/perfil.png" class="nav-icon" alt="Perfil">
+        </button>
+
+        <button class="nav-btn" onclick="location.href='centros.html'">
+          <img src="/book.png" class="nav-icon" alt="Centros de estudo">
+        </button>
+      </div>
+
+      <!-- ESPAÇO RESERVADO PARA A HOME (fica debaixo do círculo) -->
+      <div class="center-spacer"></div>
+
+      <!-- DIREITA: comunidade -->
+      <div class="right-group">
+        <button class="nav-btn" onclick="location.href='comunidade.html'">
+          <img src="/comunidade.png" class="nav-icon" alt="Comunidade">
+        </button>
+
+        <button class="nav-btn" onclick="location.href='mensagem.html'">
+          <img src="/mensagem.png" class="nav-icon" alt="Mensagem">
+        </button>        
+      </div>
+
+      <!-- HOME NO CENTRO, POR CIMA DA BARRA -->
+      <button class="home-btn" onclick="location.href='home.html'">
         <span class="home-ring">
-        <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 10.5 12 3l9 7.5v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"/>
-        </svg>
+          <img src="/home.png" class="home-icon" alt="Home">
         </span>
-    </button>
+      </button>
     </nav>
   </div>
 </body>
