@@ -1,37 +1,122 @@
-/* ===== Fonte (opcional, recomendado) ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+/* ========================================================= */
+/* ====================  LOW BAR DA APP  ==================== */
+/* ========================================================= */
 
-/* ===== Reset/Base ===== */
-*, *::before, *::after {
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffeec0; /* creme */
+  padding: 12px 28px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
   box-sizing: border-box;
 }
-html, body {
-  height: 100%;
+
+/* Botões laterais */
+.nav-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-family: inherit; /* garante consistência */
+  color: #0b4f8a;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.nav-label {
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Botão principal — Perfil */
+.nav-btn-main {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-26px);
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  background: #ffeec0;
+  border: 6px solid #0b4f8a;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-btn-main .nav-icon {
+  font-size: 28px;
+}
+
+/* Estado ativo */
+.nav-btn.active .nav-icon,
+.nav-btn.active .nav-label {
+  color: #ff7b2a;
+}
+
+/* Ecrãs muito pequenos */
+@media (max-width: 480px) {
+  .nav-label {
+    display: none;
+  }
+}
+
+
+/* ========================================================= */
+/* ==  A PARTIR DAQUI É O CONTEÚDO ESPECÍFICO DESTA PÁGINA == */
+/* ========================================================= */
+
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { 
+  height: 100%; 
   margin: 0;
 }
+
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Base */
 body {
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   background-color: #D8ECFF; /* azul clarinho */
   color: #0E1B24;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-html {
-  scrollbar-gutter: stable;
-}
 
-/* ===== Estrutura da página ===== */
+/* Estrutura */
 .screen {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto; /* topo | lista | barra inferior */
+  grid-template-rows: auto 1fr auto;
+  padding-bottom: 100px; /* espaço extra por segurança */
 }
 
-/* ===== Cabeçalho ===== */
+/* ===== Cabeçalho LABRATS ===== */
 .top {
   text-align: center;
   padding: 16px 12px;
-  background-color: #D8ECFF; /* mantém o fundo azul */
+  background-color: #D8ECFF;
 }
 
 .top h1 {
@@ -45,7 +130,8 @@ html {
   text-transform: uppercase;
 }
 
-/* ===== Lista de ciclos (botões grandes) ===== */
+/* ===== Lista de Ciclos ===== */
+
 .list {
   display: grid;
   gap: 18px;
@@ -71,84 +157,13 @@ html {
   box-shadow: 0 6px 0 #0b4e86;
   text-transform: uppercase;
 }
-.btn-cycle:hover {
-  opacity: 0.95;
+
+.btn-cycle:hover { opacity: 0.95; }
+.btn-cycle:active { transform: translateY(1px); }
+
+/* ===== Desktop refinements ===== */
+@media (min-width: 480px) {
+  .top h1 { font-size: 32px; }
+  .btn-cycle { height: 60px; }
+  .nav-btn-main { width: 68px; height: 68px; }
 }
-.btn-cycle:active {
-  transform: translateY(1px);
-}
-
-/* ===== Barra inferior ===== */
-.bottombar {
-  position: sticky;
-  bottom: 0;
-  height: 64px;
-  background: #FFF7D1;
-  border-top: 1px solid rgba(0,0,0,.06);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;    /* tudo centrado */
-  column-gap: 32px;           /* distância entre esquerda, centro e direita */
-
-  box-shadow: 0 -2px 6px rgba(0,0,0,.04);
-  z-index: 10;
-}
-
-/* grupos laterais */
-.left-group,
-.right-group {
-  display: flex;
-  gap: 16px;                  /* espaço entre ícones de cada lado */
-}
-
-/* espaço vazio debaixo da HOME */
-.center-spacer {
-  flex: 0 0 80px;             /* ~ largura do círculo da home */
-}
-
-/* botões dos ícones */
-.nav-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-/* ícones laterais */
-.nav-icon {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-}
-
-/* botão da HOME (círculo) */
-.home-btn {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 20;                 /* por cima de tudo */
-}
-
-.home-ring {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  background: #FFF7D1;
-  border-radius: 50%;
-  border: 6px solid #0A67B2;
-  box-shadow: 0 4px 0 rgba(0,0,0,.05);
-}
-
-.home-icon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-
